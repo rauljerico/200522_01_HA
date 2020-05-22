@@ -1,0 +1,7 @@
+estado_lavadora:
+  name: Estado Lavadora
+  options:
+    - "Lavando"
+    - "Parada"
+  initial: Parada
+  icon: mdi:washing-machine

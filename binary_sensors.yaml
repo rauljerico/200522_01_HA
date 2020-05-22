@@ -1,0 +1,12 @@
+- platform: rest
+  name: puerta
+  resource: 'http://192.168.1.100/api/get?api_user=hLBDdm&api_secret=6RH5WLGiZohQw2Mw&action=periph.caract&periph_id=1512628'
+  value_template: "{{ value_json.body.last_value }}"
+# - platform: rest
+#   name: terraza pequena
+#   resource: 'http://192.168.1.100/api/get?api_user=hLBDdm&api_secret=6RH5WLGiZohQw2Mw&action=periph.caract&periph_id=910815'
+#   value_template: "{{ value_json.body.last_value }}"
+- platform: rest
+  name: cabezon
+  resource: 'http://192.168.1.100/api/get?api_user=hLBDdm&api_secret=6RH5WLGiZohQw2Mw&action=periph.caract&periph_id=1715154'
+  value_template: "{{ value_json.body.last_value }}"

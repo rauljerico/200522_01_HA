@@ -1,0 +1,44 @@
+homeassistant:
+  customize: !include customize.yaml
+
+##### Enables #####
+
+api:
+config:
+logbook:
+map:
+mobile_app:
+sun:
+system_health:
+wake_on_lan:
+
+
+
+##### Integrations #####
+
+alexa: !include alexa.yaml
+automation: !include automations.yaml
+binary_sensor: !include binary_sensors.yaml
+camera: !include camera.yaml
+#climate: !include climate.yaml
+cover: !include covers.yaml
+frontend: !include frontend.yaml
+group: !include groups.yaml
+history: !include history.yaml
+homekit: !include homekit.yaml
+http: !include http.yaml
+input_boolean: !include input_boolean.yaml
+input_select: !include input_select.yaml
+light: !include light.yaml
+mqtt: !include mqtt.yaml
+#netatmo: !include netatmo.yaml
+#notify: !include notify.yaml
+panel_iframe: !include panels.yaml
+recorder: !include recorder.yaml
+sensor: !include sensors.yaml
+script: !include scripts.yaml
+switch: !include switches.yaml
+telegram_bot: !include telegram_bot.yaml
+weather: !include weather.yaml
+webostv: !include webos.yaml
+zone: !include zones.yaml

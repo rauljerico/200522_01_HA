@@ -1,0 +1,50 @@
+- platform: command_line
+  switches:
+    cabezon:
+      command_on: curl "http://192.168.1.100/api/set?api_user=hLBDdm&api_secret=6RH5WLGiZohQw2Mw&action=periph.value&periph_id=1715154&value=100"
+      command_off: curl "http://192.168.1.100/api/set?api_user=hLBDdm&api_secret=6RH5WLGiZohQw2Mw&action=periph.value&periph_id=1715154&value=0"
+      friendly_name: Cabezón
+- platform: mqtt
+  name: "enchufe_pasillo"
+  state_topic: "stat/oukitel01/POWER"
+  command_topic: "cmnd/oukitel01/POWER"
+  availability_topic: "tele/oukitel01/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: true
+- platform: mqtt
+  name: "sonoff04_test"
+  state_topic: "stat/sonoff04/POWER"
+  command_topic: "cmnd/sonoff04/POWER"
+  availability_topic: "tele/sonoff04/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: true
+- platform: mqtt
+  name: "sonoff05_test"
+  state_topic: "stat/sonoff05/POWER"
+  command_topic: "cmnd/sonoff05/POWER"
+  availability_topic: "tele/sonoff05/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: true
+- platform: mqtt
+  name: "sonoffpow01"
+  state_topic: "stat/sonoffpow01/POWER"
+  command_topic: "cmnd/sonoffpow01/POWER"
+  availability_topic: "tele/sonoffpow01/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: true

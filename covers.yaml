@@ -1,0 +1,28 @@
+#  - platform: mqtt
+#    name: shelly25_roller_1
+#    state_topic: "shellies/shellyswitch25-007E02/roller/0"
+#    command_topic: "shellies/shellyswitch25-007E02/roller/0/command"
+#    position_topic: "shellies/shellyswitch25-007E02/roller/0/pos"
+#    set_position_topic: "shellies/shellyswitch25-007E02/roller/0/command/pos"
+#    payload_available: "true"
+#    payload_not_available: "false"
+#    qos: 1
+#    retain: false
+#    optimistic: false
+#    payload_open: "open"
+#    payload_close: "close"
+#    payload_stop: "stop"
+#    position_open: 100
+#    position_closed: 0 
+- platform: command_line
+  covers:
+    toldo_salon:
+      command_open: curl "http://192.168.1.100/api/set?api_user=hLBDdm&api_secret=6RH5WLGiZohQw2Mw&action=periph.value&periph_id=420368&value=100"
+      command_close: curl "http://192.168.1.100/api/set?api_user=hLBDdm&api_secret=6RH5WLGiZohQw2Mw&action=periph.value&periph_id=420368&value=0"
+      command_stop: curl "http://192.168.1.100/api/set?api_user=hLBDdm&api_secret=6RH5WLGiZohQw2Mw&action=periph.value&periph_id=420368&value=240"
+- platform: command_line
+  covers:
+    toldo_dormitorio:
+      command_open: curl "http://192.168.1.100/api/set?api_user=hLBDdm&api_secret=6RH5WLGiZohQw2Mw&action=periph.value&periph_id=420481&value=100"
+      command_close: curl "http://192.168.1.100/api/set?api_user=hLBDdm&api_secret=6RH5WLGiZohQw2Mw&action=periph.value&periph_id=420481&value=0"
+      command_stop: curl "http://192.168.1.100/api/set?api_user=hLBDdm&api_secret=6RH5WLGiZohQw2Mw&action=periph.value&periph_id=420481&value=240"

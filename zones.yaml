@@ -1,0 +1,15 @@
+- name: trabajo
+  latitude: 41.661651611328
+  longitude: -0.88327855205108
+  radius: 100
+  icon: mdi:duck
+- name: papas
+  latitude: 41.868391
+  longitude: -1.312484
+  radius: 50
+  icon: ndi:home
+- name: suegros
+  latitude: 41.867550
+  longitude: -1.309635
+  radius: 50
+  icon: mdi:home

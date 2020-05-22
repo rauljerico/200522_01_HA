@@ -1,0 +1,18 @@
+port: 51830
+filter:
+  include_entities:
+    - light.mesa
+    - light.lampara_de_pie
+    - light.lamparita
+    - light.shelly25_salon_1
+    - light.shelly25_salon_2
+    - light.shelly25_cocina_1
+    - light.shelly25_cocina_2
+    - light.shelly25_pasillo_1
+    - light.shelly25_pasillo_2
+    - sensor.higro_1_humidity
+    - sensor.higro_2_humidity
+    - sensor.higro_1_temperature
+    - sensor.higro_2_temperature
+    - switch.enchufe_pasillo
+    - input_boolean.elgato_switch

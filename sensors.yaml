@@ -1,0 +1,318 @@
+- platform: mqtt
+  name: "Power"
+  state_topic: "tele/sonoff01/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Power"] }}'
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "Voltage"
+  state_topic: "tele/sonoff01/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
+  unit_of_measurement: "V"
+- platform: mqtt
+  name: "Current"
+  state_topic: "tele/sonoff01/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Current"] }}'
+  unit_of_measurement: "A"
+- platform: mqtt
+  name: "Power_pow01"
+  state_topic: "tele/sonoffpow01/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Power"] }}'
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "Voltage_pow01"
+  state_topic: "tele/sonoffpow01/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
+  unit_of_measurement: "V"
+- platform: mqtt
+  name: "Current_pow01"
+  state_topic: "tele/sonoffpow01/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Current"] }}'
+  unit_of_measurement: "A"
+- platform: mqtt
+  name: "Total_pow01"
+  state_topic: "tele/sonoffpow01/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Total"] }}'
+  unit_of_measurement: "kWh"
+- platform: mqtt
+  name: "Yesterday_pow01"
+  state_topic: "tele/sonoffpow01/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Yesterday"] }}'
+  unit_of_measurement: "kWh"
+- platform: mqtt
+  name: "Today_pow01"
+  state_topic: "tele/sonoffpow01/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Today"] }}'
+  unit_of_measurement: "kWh"
+- platform: rest
+  name: temperatura_cocina
+  resource: 'http://192.168.1.100/api/get?api_user=hLBDdm&api_secret=6RH5WLGiZohQw2Mw&action=periph.caract&periph_id=1941186'
+  value_template: "{{ value_json.body.last_value }}"
+- platform: rest
+  name: humedad_cocina
+  resource: 'http://192.168.1.100/api/get?api_user=hLBDdm&api_secret=6RH5WLGiZohQw2Mw&action=periph.caract&periph_id=1941190'
+  value_template: "{{ value_json.body.last_value }}"
+- platform: rest
+  name: temperatura_dormitorio
+  resource: 'http://192.168.1.100/api/get?api_user=hLBDdm&api_secret=6RH5WLGiZohQw2Mw&action=periph.caract&periph_id=1941189'
+  value_template: "{{ value_json.body.last_value }}"
+- platform: rest
+  name: humedad_dormitorio
+  resource: 'http://192.168.1.100/api/get?api_user=hLBDdm&api_secret=6RH5WLGiZohQw2Mw&action=periph.caract&periph_id=1941191'
+  value_template: "{{ value_json.body.last_value }}"
+- platform: rest
+  name: temperatura_pasillo
+  resource: 'http://192.168.1.100/api/get?api_user=hLBDdm&api_secret=6RH5WLGiZohQw2Mw&action=periph.caract&periph_id=1512629'
+  value_template: "{{ value_json.body.last_value }}"
+- platform: rest
+  name: temperatura_exterior
+  resource: 'http://192.168.1.100/api/get?api_user=hLBDdm&api_secret=6RH5WLGiZohQw2Mw&action=periph.caract&periph_id=1941187'
+  value_template: "{{ value_json.body.last_value }}"
+- platform: rest
+  name: viento
+  resource: 'http://192.168.1.100/api/get?api_user=hLBDdm&api_secret=6RH5WLGiZohQw2Mw&action=periph.caract&periph_id=1941193'
+  value_template: "{{ value_json.body.last_value }}"
+#- platform: rest
+#  name: toldo_dormitorio
+#  resource: 'http://192.168.1.100/api/get?api_user=hLBDdm&api_secret=6RH5WLGiZohQw2Mw&action=periph.caract&periph_id=420481'
+#  value_template: "{{ value_json.body.last_value_text }}"
+#- platform: rest
+#  name: toldo_salon
+#  resource: 'http://192.168.1.100/api/get?api_user=hLBDdm&api_secret=6RH5WLGiZohQw2Mw&action=periph.caract&periph_id=420368'
+#  value_template: "{{ value_json.body.last_value_text }}"
+- platform: command_line
+  name: Version Instalada
+  command: "head -5 /config/.HA_VERSION"
+- platform: command_line
+  name: CPU Temp
+  command: "cat /sys/devices/virtual/thermal/thermal_zone0/temp"
+  value_template: '{{ value | multiply(0.001) | round(1) }}'
+- platform: command_line
+  name: Tiempo Funcionando
+  command: echo "$(($(date +%s) - $(date -d "$(head -n1 /config/home-assistant.log | cut -d' ' -f-2)" +%s)))"
+  scan_interval: 720
+  value_template: >-
+    {% set uptime = value | int %}
+    {% set seconds = uptime % 60 %}
+    {% set minutes = ((uptime % 3600) / 60) | int %}
+    {% set hours = ((uptime % 86400) / 3600) | int %}
+    {% set days = (uptime / 86400) | int %}
+    {%- if days > 0 -%}
+      {%- if days == 1 -%}
+        1 day
+      {%- else -%}
+        {{ days }} days
+      {%- endif -%}
+      {{ ', ' }}
+    {%- endif -%}
+    {{ '%02d' % hours }}:{{ '%02d' % minutes }}
+- platform: command_line
+  name: Size db
+  command: "ls -sh /config/home-assistant_v2.db | cut -f1 -d ' '"
+  value_template: "{{ value | multiply(1/1024) | round(1) }}"
+#- platform: template
+#  sensors:
+#    temperatura_termostato:
+#      value_template: >-
+#        {{ states.climate.netatmo_salon.attributes.current_temperature }}
+- platform: mitemp_bt
+  mac: 4C:65:A8:DD:B3:4D
+  name: higro_1
+  force_update: false
+  median: 3
+  monitored_conditions:
+    - temperature
+    - humidity
+    - battery
+- platform: mitemp_bt
+  mac: 4C:65:A8:DD:C8:4A
+  name: higro_2
+  force_update: false
+  median: 3
+  monitored_conditions:
+    - temperature
+    - humidity
+    - battery
+
+- platform: mqtt
+  name: "Salón (Temperatura)"
+  state_topic: "shellies/shellyswitch25-007E03/temperature"
+  unit_of_measurement: "°C"
+- platform: mqtt
+  name: "Zona de estar (Estado)"
+  state_topic: "shellies/shellyswitch25-007E03/relay/0"
+- platform: mqtt
+  name: "Comedor (Estado)"
+  state_topic: "shellies/shellyswitch25-007E03/relay/1"
+- platform: mqtt
+  name: "Zona de estar (Consumo)"
+  state_topic: "shellies/shellyswitch25-007E03/relay/0/power"
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "Comedor (Consumo)"
+  state_topic: "shellies/shellyswitch25-007E03/relay/1/power"
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "Zona de estar (Consumo acumulado)"
+  state_topic: "shellies/shellyswitch25-007E03/relay/0/energy"
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "Comedor (Consumo acumulado)"
+  state_topic: "shellies/shellyswitch25-007E03/relay/1/energy"
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "Zona de estar (Switch)"
+  state_topic: "shellies/shellyswitch25-007E03/input/0"
+- platform: mqtt
+  name: "Comedor (Switch)"
+  state_topic: "shellies/shellyswitch25-007E03/input/1"
+
+- platform: mqtt
+  name: "Cocina (Temperatura)"
+  state_topic: "shellies/shellyswitch25-007E12/temperature"
+  unit_of_measurement: "°C"
+- platform: mqtt
+  name: "Principal (Estado)"
+  state_topic: "shellies/shellyswitch25-007E12/relay/0"
+- platform: mqtt
+  name: "Secundaria (Estado)"
+  state_topic: "shellies/shellyswitch25-007E12/relay/1"
+- platform: mqtt
+  name: "Principal (Consumo)"
+  state_topic: "shellies/shellyswitch25-007E12/relay/0/power"
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "Secundaria (Consumo)"
+  state_topic: "shellies/shellyswitch25-007E12/relay/1/power"
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "Principal (Consumo acumulado)"
+  state_topic: "shellies/shellyswitch25-007E12/relay/0/energy"
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "Secundaria (Consumo acumulado)"
+  state_topic: "shellies/shellyswitch25-007E12/relay/1/energy"
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "Principal (Switch)"
+  state_topic: "shellies/shellyswitch25-007E12/input/0"
+- platform: mqtt
+  name: "Secundaria (Switch)"
+  state_topic: "shellies/shellyswitch25-007E12/input/1"
+
+- platform: mqtt
+  name: "Pasillo (Temperatura)"
+  state_topic: "shellies/shellyswitch25-007E02/temperature"
+  unit_of_measurement: "°C"
+- platform: mqtt
+  name: "Recibidor (Estado)"
+  state_topic: "shellies/shellyswitch25-007E02/relay/0"
+- platform: mqtt
+  name: "Fondo (Estado)"
+  state_topic: "shellies/shellyswitch25-007E02/relay/1"
+- platform: mqtt
+  name: "Recibidor (Consumo)"
+  state_topic: "shellies/shellyswitch25-007E02/relay/0/power"
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "Fondo (Consumo)"
+  state_topic: "shellies/shellyswitch25-007E02/relay/1/power"
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "Recibidor (Consumo acumulado)"
+  state_topic: "shellies/shellyswitch25-007E02/relay/0/energy"
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "Fondo (Consumo acumulado)"
+  state_topic: "shellies/shellyswitch25-007E02/relay/1/energy"
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "Recibidor (Switch)"
+  state_topic: "shellies/shellyswitch25-007E02/input/0"
+- platform: mqtt
+  name: "Fondo (Switch)"
+  state_topic: "shellies/shellyswitch25-007E02/input/1"
+
+- platform: mqtt
+  name: "Invitados (Temperatura)"
+  state_topic: "shellies/shellyswitch25-E6645A/temperature"
+  unit_of_measurement: "°C"
+- platform: mqtt
+  name: "Invitados_1 (Estado)"
+  state_topic: "shellies/shellyswitch25-E6645A/relay/0"
+- platform: mqtt
+  name: "Invitados_2 (Estado)"
+  state_topic: "shellies/shellyswitch25-E6645A/relay/1"
+- platform: mqtt
+  name: "Invitados_1 (Consumo)"
+  state_topic: "shellies/shellyswitch25-E6645A/relay/0/power"
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "Invitados_2 (Consumo)"
+  state_topic: "shellies/shellyswitch25-E6645A/relay/1/power"
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "Invitados_1 (Consumo acumulado)"
+  state_topic: "shellies/shellyswitch25-E6645A/relay/0/energy"
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "Invitados_2 (Consumo acumulado)"
+  state_topic: "shellies/shellyswitch25-E6645A/relay/1/energy"
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "Invitados_1 (Switch)"
+  state_topic: "shellies/shellyswitch25-E6645A/input/0"
+- platform: mqtt
+  name: "Invitados_2 (Switch)"
+  state_topic: "shellies/shellyswitch25-E6645A/input/1"
+
+- platform: mqtt
+  name: "Noa (Temperatura)"
+  state_topic: "shellies/shellyswitch25-BCDDC27756D3/temperature"
+  unit_of_measurement: "°C"
+- platform: mqtt
+  name: "Luz de Noa (Estado)"
+  state_topic: "shellies/shellyswitch25-BCDDC27756D3/relay/0"
+- platform: mqtt
+  name: "Armario de Noa (Estado)"
+  state_topic: "shellies/shellyswitch25-BCDDC27756D3/relay/1"
+- platform: mqtt
+  name: "Luz de Noa (Consumo)"
+  state_topic: "shellies/shellyswitch25-BCDDC27756D3/relay/0/power"
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "Armario de Noa (Consumo)"
+  state_topic: "shellies/shellyswitch25-BCDDC27756D3/relay/1/power"
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "Luz de Noa (Consumo acumulado)"
+  state_topic: "shellies/shellyswitch25-BCDDC27756D3/relay/0/energy"
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "Armario de Noa (Consumo acumulado)"
+  state_topic: "shellies/shellyswitch25-BCDDC27756D3/relay/1/energy"
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "Luz de Noa (Switch)"
+  state_topic: "shellies/shellyswitch25-BCDDC27756D3/input/0"
+- platform: mqtt
+  name: "Armario de Noa (Switch)"
+  state_topic: "shellies/shellyswitch25-BCDDC27756D3/input/1"
+  
+- platform: mqtt
+  name: "Luz Dormitorio (Switch)"
+  state_topic: "shellies/shellydimmer-D464E0/input/0"
+- platform: mqtt
+  name: "Luz Dormitorio (Temperatura)"
+  state_topic: "shellies/shellydimmer-D464E0/temperature"
+- platform: mqtt
+  name: "Luz Dormitorio (On_Off)"
+  state_topic: "shellies/shellydimmer-D464E0/light/0"
+- platform: mqtt
+  name: "Luz Dormitorio (Consumo)"
+  state_topic: "shellies/shellydimmer-D464E0/light/0/power"
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "Luz Dormitorio (Consumo acumulado)"
+  state_topic: "shellies/shellydimmer-D464E0/light/0/energy"
+  unit_of_measurement: "W"
+ 

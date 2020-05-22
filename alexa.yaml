@@ -1,0 +1,19 @@
+smart_home:
+  filter:
+    include_entities:
+      - light.shelly25_salon_1
+      - light.shelly25_salon_2
+      - light.shelly25_pasillo_1
+      - light.shelly25_pasillo_2
+      - light.shelly25_invitados_1
+      - light.shelly25_invitados_2
+      - light.shelly25_noa_1
+      - light.shelly25_noa_2
+      - light.shelly25_cocina_1
+      - light.shelly25_cocina_2
+      - light.armario_dormitorio
+      - light.luz_dormitorio
+      - light.terraza_pequena
+      - light.terraza_grande
+      - media_player.lg_webos_smart_tv
+      - media_player.tv_cocina

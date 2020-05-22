@@ -1,0 +1,4 @@
+title: Mi Casa
+
+views:
+  - !include lovelace/main.yaml

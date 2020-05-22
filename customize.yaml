@@ -1,0 +1,246 @@
+media_player.lg_webos_smart_tv:
+  friendly_name: TV Del Salón
+sensor.iphone_de_raul_battery_level:
+  hidden: true
+sensor.iphone_de_raul_battery_state:
+  hidden: true
+media_player.samsung_tv_remote:
+  friendly_name: TV De La Cocina
+media_player.salon:
+  friendly_name: Apple TV
+remote.salon:
+  friendly_name: Apple TV
+  hidden: true
+sensor.ipad_pro_de_raul_battery_level:
+  hidden: true
+sensor.ipad_pro_de_raul_battery_state:
+  hidden: true
+climate.termostato: {}
+switch.sonoff02:
+  friendly_name: Lámpara de pie
+sensor.size_db:
+  unit_of_measurement: MB
+sensor.cpu_temp:
+  unit_of_measurement: ºC
+sensor.tiempo_funcionando:
+  friendly_name: Uptime
+sensor.version_instalada:
+  friendly_name: Version
+sensor.temperatura_termostato:
+  friendly_name: Temperatura Salón
+  icon: mdi:thermometer
+  unit_of_measurement: ºC
+sensor.sensor_temperatura_noa:
+  unit_of_measurement: ºC
+sensor.temperatura_noa:
+  unit_of_measurement: ºC
+sensor.temperatura_invitados:
+  unit_of_measurement: ºC
+sensor.temperatura_pasillo:
+  friendly_name: Tª Pasillo
+  icon: mdi:thermometer
+  unit_of_measurement: ºC
+binary_sensor.puerta:
+  device_class: door
+  friendly_name: Puerta
+  icon: mdi:door
+sensor.temperatura_exterior:
+  icon: mdi:thermometer
+  unit_of_measurement: ºC
+sensor.toldo_dormitorio:
+  friendly_name: Toldo Dormitorio (Estado)
+  icon: mdi:garage
+sensor.toldo_salon:
+  friendly_name: Toldo Salón (Estado)
+  icon: mdi:garage
+binary_sensor.toldo_dormitorio:
+  device_class: window
+  friendly_name: Toldo Dormitorio (Estado)
+binary_sensor.toldo_salon:
+  device_class: window
+  friendly_name: Toldo Salón (Estado)
+sensor.higro_1_humidity:
+  friendly_name: Higro Invitados (H)
+  icon: mdi:water-percent
+sensor.higro_2_humidity:
+  friendly_name: Higro Noa (H)
+  icon: mdi:water-percent
+sensor.higro_1_battery:
+  friendly_name: Higro Invitados (B)
+  icon: mdi:battery
+sensor.higro_2_battery:
+  friendly_name: Higro Noa (B)
+  icon: mdi:battery
+sensor.temperatura_cocina:
+  icon: mdi:thermometer
+  unit_of_measurement: ºC
+sensor.temperatura_dormitorio:
+  icon: mdi:thermometer
+  unit_of_measurement: ºC
+sensor.humedad_cocina:
+  icon: mdi:water-percent
+  unit_of_measurement: '%'
+sensor.humedad_dormitorio:
+  icon: mdi:water-percent
+  unit_of_measurement: '%'
+light.lampara_de_pie:
+  icon: mdi:floor-lamp
+device_tracker.esther:
+  friendly_name: Esther
+  source_type: router
+device_tracker.raul:
+  friendly_name: Raúl
+sensor.viento:
+  friendly_name: Viento
+  icon: mdi:weather-windy
+  unit_of_measurement: m/s
+sensor.upnp_igd_kbyte_sec_received:
+  friendly_name: Download
+  icon: mdi:chevron-down
+  unit_of_measurement: kb/s
+sensor.upnp_igd_kbyte_sec_sent:
+  friendly_name: Upload
+  icon: mdi:chevron-up
+  unit_of_measurement: kb/s
+switch.cabezon:
+  friendly_name: Cabezón
+  icon: mdi:lightbulb-outline
+switch.recibidor:
+  icon: mdi:lightbulb
+switch.fondo:
+  icon: mdi:lightbulb
+sensor.speedtest_download:
+  icon: mdi:cloud-download
+sensor.speedtest_upload:
+  icon: mdi:cloud-upload
+weather.dark_sky:
+  icon: mdi:white-balance-sunny
+sensor.status_cabezon:
+  icon: mdi:lamp
+binary_sensor.status_cabezon:
+  icon: mdi:lamp
+switch.enchufe_appletv:
+  friendly_name: Apple TV
+  icon: mdi:television
+switch.enchufe_pasillo:
+  friendly_name: Enchufe Pasillo
+  icon: mdi:power-socket-eu
+light.lamparita:
+  friendly_name: Lamparita
+  icon: mdi:lava-lamp
+sensor.voltage_appletv:
+  friendly_name: Voltage Apple TV
+  icon: mdi:gauge
+sensor.current_appletv:
+  friendly_name: Current Apple TV
+  icon: mdi:gauge
+sensor.power_appletv:
+  friendly_name: Power Apple TV
+  icon: mdi:gauge
+sensor.current_lamparita:
+  friendly_name: Current Lamparita
+  icon: mdi:gauge
+sensor.power_lamparita:
+  friendly_name: Power Lamparita
+  icon: mdi:gauge
+sensor.voltage_lamparita:
+  friendly_name: Voltage Lamparita
+  icon: mdi:gauge
+device_tracker.estheriphone:
+  friendly_name: Esther
+device_tracker.ikiphone:
+  friendly_name: Raúl
+sensor.gasolinera1:
+  icon: mdi:gas-station
+sensor.gasolinera2:
+  icon: mdi:gas-station
+sensor.shelly_24_salon:
+  icon: mdi:gauge
+light.shelly25_cocina_1:
+  friendly_name: Luz principal
+  icon: mdi:circle-slice-8
+light.shelly25_cocina_2:
+  friendly_name: Luz secundaria
+  icon: mdi:circle-slice-8
+light.shelly25_salon_1:
+  friendly_name: Zona de estar
+  icon: mdi:circle-slice-8
+light.shelly25_salon_2:
+  friendly_name: Comedor
+  icon: mdi:circle-slice-8
+sensor.shelly25_cocina_1_e:
+  friendly_name: Luz principal (E)
+sensor.shelly25_cocina_1_w:
+  friendly_name: Luz principal (W)
+sensor.shelly25_cocina_2_e:
+  friendly_name: Luz secundaria (E)
+sensor.shelly25_cocina_2_w:
+  friendly_name: Luz secundaria (W)
+sensor.shelly25_salon_1_e:
+  friendly_name: Zona de estar (E)
+sensor.shelly25_salon_1_w:
+  friendly_name: Zona de estar (W)
+sensor.shelly25_salon_2_e:
+  friendly_name: Comedor (E)
+sensor.shelly25_salon_2_w:
+  friendly_name: Comedor (W)
+sensor.higro_1_temperature:
+  friendly_name: Higro Invitados (T)
+sensor.higro_2_temperature:
+  friendly_name: Higro Noa (T)
+light.mesa:
+  friendly_name: Mesa
+  icon: mdi:light-switch
+cover.toldo_dormitorio:
+  friendly_name: Toldo Dormitorio
+cover.toldo_salon:
+  friendly_name: Toldo Salón
+input_boolean.elgato_switch:
+  icon: mdi:power-socket-eu
+light.cabezon:
+  icon: mdi:lightbulb-outline
+media_player.unnamed_device:
+  friendly_name: SK8
+light.shelly25_pasillo_1:
+  friendly_name: Recibidor
+  icon: mdi:circle-slice-8
+light.shelly25_pasillo_2:
+  friendly_name: Fondo
+  icon: mdi:circle-slice-8
+switch.sonoffpow01:
+  icon: mdi:washing-machine
+light.shelly25_invitados_1:
+  friendly_name: Luz Invitados 1
+  icon: mdi:circle-slice-8
+light.shelly25_invitados_2:
+  friendly_name: Luz Invitados 2
+  icon: mdi:circle-slice-8
+sensor.hp_envy_4520_series_black_ink:
+  friendly_name: HP Cartucho negro
+sensor.hp_envy_4520_series_tri_color_ink:
+  friendly_name: HP Cartucho color
+sensor.hp_envy_4520_series_uptime:
+  friendly_name: HP Tiempo en marcha
+sensor.hp_envy_4520_series:
+  friendly_name: HP Estado
+switch.terraza_pequena:
+  icon: mdi:coach-lamp
+light.terraza_pequena:
+  icon: mdi:coach-lamp
+binary_sensor.status_terraza_pequena:
+  icon: mdi:coach-lamp
+input_boolean.terraza_pequena_switch:
+  icon: mdi:coach-lamp
+input_boolean.cabezon_switch:
+  icon: mdi:lightbulb-outline
+light.shelly25_noa_1:
+  icon: mdi:circle-slice-8
+light.shelly25_noa_2:
+  icon: mdi:circle-slice-8
+light.armario_dormitorio:
+  icon: mdi:circle-slice-8
+light.luz_dormitorio:
+  icon: mdi:circle-slice-8
+light.terraza_grande:
+  icon: mdi:coach-lamp
+sensor.linea_35: {}

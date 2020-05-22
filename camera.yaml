@@ -1,0 +1,11 @@
+- platform: ffmpeg
+  name: dafang01_ffmpeg
+  input: -rtsp_transport tcp -i rtsp://192.168.1.61:8554/unicast
+- platform: generic
+  name: dafang01_generic
+  username: root
+  password: ismart12
+  authentication: basic
+  still_image_url: https://192.168.1.61/cgi-bin/currentpic.cgi
+  verify_ssl: false
+  scan_interval: 5

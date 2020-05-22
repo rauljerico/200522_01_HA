@@ -1,0 +1,15 @@
+- host: 192.168.1.43
+  turn_on_action:
+    service: wake_on_lan.send_magic_packet
+    data:
+      mac: "a8-23-fe-89-e7-65"
+  customize:
+    sources:
+      - Amazon Prime Video
+      - Apple TV 4K
+      - Disney+
+      - HBO España
+      - Live TV
+      - Netflix
+      - Smart IPTV
+      - YouTube

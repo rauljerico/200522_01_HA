@@ -1,0 +1,60 @@
+- id: '1585731589773'
+  alias: Lavadora INICIO
+  description: Lanza el inicio del lavado
+  trigger:
+  - above: '10'
+    entity_id: sensor.power_pow01
+    platform: numeric_state
+  condition:
+  - condition: state
+    entity_id: input_select.estado_lavadora
+    state: Parada
+  action:
+  - data:
+      entity_id: input_select.estado_lavadora
+      option: Lavando
+    entity_id: input_select.estado_lavadora
+    service: input_select.select_option
+  - data:
+      message: Lavadora en marcha
+    service: telegram_bot.send_message
+- id: '1585862204712'
+  alias: Lavadora FINAL
+  description: Lanza el final del lavado
+  trigger:
+  - below: '5'
+    entity_id: sensor.power_pow01
+    for: 0:01:00
+    platform: numeric_state
+  condition:
+  - condition: state
+    entity_id: input_select.estado_lavadora
+    state: Lavando
+  action:
+  - data:
+      entity_id: input_select.estado_lavadora
+      option: Parada
+    entity_id: input_select.estado_lavadora
+    service: input_select.select_option
+  - data:
+      message: La lavadora ha terminado
+    service: telegram_bot.send_message
+- id: '1587248895897'
+  alias: Luz terraza pequeña encendida
+  description: ''
+  trigger:
+  - entity_id: light.terraza_pequena
+    for: 0:05:00
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - entity_id: light.terraza_pequena
+    service: light.turn_off
+  - data:
+      message: Acabo de apagar la luz porque Noa la ha encendido ;)
+    service: telegram_bot.send_message
+  - data:
+      file: www/red_light.png
+    service: telegram_bot.send_photo

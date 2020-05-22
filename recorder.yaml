@@ -1,0 +1,22 @@
+purge_keep_days: 1
+include:
+  entities:
+    - sensor.cpu_temp
+    - sensor.current
+    - sensor.power
+    - sensor.size_db
+    - sensor.temperatura_exterior
+    - sensor.temperatura_cocina
+    - sensor.humedad_cocina
+    - sensor.temperatura_dormitorio
+    - sensor.humedad_dormitorio
+    - sensor.temperatura_pasillo
+    - sensor.tiempo_funcionando
+    - sensor.voltage
+    - sensor.higro_1_temperature
+    - sensor.higro_1_humidity
+    - sensor.higro_2_temperature
+    - sensor.higro_2_humidity
+    - sensor.viento
+    - sensor.power_pow01
+    - binary_sensor.puerta
